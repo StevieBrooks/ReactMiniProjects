@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Counter from "./Counter"
 import ColorPicker from "./ColorPicker"
+import TodoList from "./TodoList"
 
 
 function ReactMiniProjectMenu() {
@@ -16,6 +17,9 @@ function ReactMiniProjectMenu() {
                 break;
             case "colorPicker":
                 return <ColorPicker resetMenu={setSelectedProject} />;
+                break;
+            case "todoList":
+                return <TodoList resetMenu={setSelectedProject} />;
                 break;
             default:
                 return null;
@@ -48,6 +52,8 @@ function ReactMiniProjectMenu() {
             <button className="menu-btn" onClick={() => setSelectedProject("counter")}>1. Increment Counter</button>
 
             <button className="menu-btn" onClick={() => setSelectedProject("colorPicker")}>2. Color Picker</button>
+
+            <button className="menu-btn" onClick={() => setSelectedProject("todoList")}>3. To Do List</button>
 
         </div>
 
