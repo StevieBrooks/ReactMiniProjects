@@ -2,32 +2,33 @@ import { useState } from "react";
 
 function TodoList( { resetMenu } ) {
 
+    const [newTask, setNewTask] = useState({name: "", completed: false})
     const [tasks, setTasks] = useState([])
-    const [newTask, setNewTask] = useState("")
 
-    // HELPER FUNCTIONS
-
-    /* add new task */
     const addTask = (e) => {
-
         e.preventDefault()
-        
-        if(newTask.trim() === "") {
+        if(newTask.name.length < 1) {
             return;
         }
 
-        setTasks([...tasks, newTask])
-        setNewTask("")
+        setTasks([newTask, ...tasks])
+        setNewTask({name: "", completed: false})
         e.target.parentElement.reset()
-    };
-
-    /* delete task based on task.id key */
-    const deleteTask = (index) => {
-        const updatedTasks = [...tasks];
-        updatedTasks.splice(index, 1);
-        setTasks(updatedTasks);
     }
+
+    const doneTask = (taskIndex) => {
+        const updatedTasks = [...tasks];
+        updatedTasks[taskIndex].completed = true; 
+        setTasks(updatedTasks);
+        console.log(tasks)
+    };
     
+
+    const deleteTask = (taskToDelete) => {
+        const updatedTasks = [...tasks]
+        updatedTasks.splice(taskToDelete, 1)
+        setTasks(updatedTasks)
+    }
 
     return (<>
         <header>
@@ -35,17 +36,19 @@ function TodoList( { resetMenu } ) {
         </header>
 
         <div className="input-container" style={{margin: "5rem 0 2rem"}}>
-            <form className="task-form">
-                <input type="text" className="task-input" placeholder="Type task..." onChange={(e) => setNewTask(e.target.value)}/>
-                <button className="task-submit" onClick={addTask}>Submit</button>
+            <form action="" className="input-form">
+                <input type="text" className="task-input" onChange={(e) => setNewTask({...newTask, name: e.target.value})} placeholder="Punch in new task..." />
+                <button className="task-submit" onClick={addTask}>Submit Task</button>
             </form>
         </div>
 
         <div className="task-container">
-            <ul className="task-list">
+            <ul>
                 {tasks.map((task, index) => (
-                    <div key={index}>
-                        <li>{task}<button className="delete-button" onClick={() => deleteTask(index)}>Delete</button></li>
+                    <div key={index} style={{background: task.completed && "red"}}>
+                        <li>{task.name}</li>
+                        <button className="done-task" onClick={() => doneTask(index)}>Done</button>
+                        <button className="delete-task" onClick={() => deleteTask(index)}>Delete</button>
                     </div>
                 ))}
             </ul>
