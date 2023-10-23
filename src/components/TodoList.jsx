@@ -1,4 +1,4 @@
-import TodoCards from "./TodoCards"
+import TodoCards from "./ToDoCards"
 import { useState } from "react";
 
 function TodoList( { resetMenu } ) {
