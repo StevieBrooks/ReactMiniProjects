@@ -8,7 +8,7 @@ export default function GameBoard() {
 
     return (
 
-        <div className="game-board w-96 h-96 bg-slate-600 m-auto">
+        <div className="game-board w-96 h-96 bg-slate-600 m-auto relative top-12 flex flex-wrap justify-center items-center">
             {boardState.map((cell, index) => (
                 cell.map((gameCell, index) => (
                     <GameCell key={index} />
