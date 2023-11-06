@@ -7,9 +7,7 @@ export default function App() {
 
     const [player, setPlayer] = useState(1)
     const [boardState, setBoardState] = useState([
-        [null, null, null],
-        [null, null, null],
-        [null, null, null],
+        null, null, null, null, null, null, null, null, null
     ])
     const [result, setResult] = useState("")
 
