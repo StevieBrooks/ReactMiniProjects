@@ -18,6 +18,13 @@ export default function App() {
     </>)
 }
 
+/*IDEAS
+ - add dropdown to change theme
+ - form so players can punch in their own names for scoreboard
+ - reset one game or entire match
+ - extra points for actiing quickly
+*/
+
 /*
     Set Up Your React Project:
 Start by creating a new React project using a tool like Create React App or your preferred setup.

@@ -15,7 +15,7 @@ export default function GameBoard() {
 
             <div className="game-board w-96 h-96 bg-slate-600 m-auto flex flex-wrap justify-center items-center">
                 {boardState.map((cell, index) => (
-                    <GameCell key={index} />
+                    <GameCell key={index} index={index} />
                 ))}
             </div>
 
@@ -28,4 +28,3 @@ export default function GameBoard() {
     )
 }
 
-// need to figure out how to arrange cells
